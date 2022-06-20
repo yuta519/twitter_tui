@@ -13,8 +13,6 @@ import (
 
 type model models.Model
 
-// type m Init.Initialize()
-
 func initialize() model {
 	ti := textinput.New()
 	ti.Placeholder = "Pikachu"
