@@ -18,18 +18,18 @@ type Model struct {
 	Err          error
 }
 
-func Initialize() Model {
-	ti := textinput.New()
-	ti.Placeholder = "Pikachu"
-	ti.Focus()
-	ti.CharLimit = 156
-	ti.Width = 20
+// func Initialize() Model {
+// 	ti := textinput.New()
+// 	ti.Placeholder = "Pikachu"
+// 	ti.Focus()
+// 	ti.CharLimit = 156
+// 	ti.Width = 20
 
-	return Model{
-		Accounts:     []string{"golangch", "GolangTrends", "golang_news"},
-		IsChosen:     false,
-		IsTextFormat: false,
-		TextInput:    ti,
-		Selected:     make(map[int]struct{}),
-	}
-}
+// 	return Model{
+// 		Accounts:     []string{"golangch", "GolangTrends", "golang_news"},
+// 		IsChosen:     false,
+// 		IsTextFormat: false,
+// 		TextInput:    ti,
+// 		Selected:     make(map[int]struct{}),
+// 	}
+// }
