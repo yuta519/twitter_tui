@@ -10,7 +10,6 @@ func FetchTweetsByAccount(account string) {
 	values.Set("screen_name", account)
 
 	tweets, err := twitterApi.GetUserTimeline(values)
-
 	if err != nil {
 		panic(err)
 	}
