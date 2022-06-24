@@ -15,6 +15,6 @@ func FetchTweetsByAccount(account string) {
 	}
 
 	for _, tweet := range tweets {
-		fmt.Println("tweet: ", tweet.Text)
+		fmt.Print(tweet.FullText, "\n\n")
 	}
 }
