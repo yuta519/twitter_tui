@@ -3,6 +3,7 @@ package twitter
 import (
 	"fmt"
 	"net/url"
+	"strconv"
 )
 
 func FetchTweetsByAccount(account string) {
@@ -14,9 +15,13 @@ func FetchTweetsByAccount(account string) {
 		panic(err)
 	}
 
-	for _, tweet := range tweets {
-		fmt.Printf("\x1b[31m%s\x1b[0m", tweet.FullText)
+	for i, tweet := range tweets {
+		onesPlace := strconv.Itoa(i % 10)
+		fmt.Printf(onesPlace)
+		letterColor := fmt.Sprintf(
+			"%s%s%s%s%s", "\x1b[3", onesPlace, "m", tweet.FullText, "\x1b[0m")
+		fmt.Printf(letterColor)
+		fmt.Print(letterColor)
 		fmt.Print("\n\n")
-		// fmt.Print(tweet.FullText, "\n\n")
 	}
 }
