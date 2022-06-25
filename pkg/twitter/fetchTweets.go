@@ -17,11 +17,10 @@ func FetchTweetsByAccount(account string) {
 
 	for i, tweet := range tweets {
 		onesPlace := strconv.Itoa(i % 10)
-		letterColor := fmt.Sprintf(
+		coloredTweet := fmt.Sprintf(
 			"%s%s%s%s%s", "\x1b[3", onesPlace, "m", tweet.FullText, "\x1b[0m",
 		)
-		fmt.Printf(letterColor)
-		fmt.Print(letterColor)
+		fmt.Printf(coloredTweet)
 		fmt.Print("\n\n")
 	}
 }
