@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/yuta519/twitter_tui/pkg/twitter"
 )
@@ -15,6 +16,8 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	twitter.FetchTweetsByAccount(account)
+	twitter.FetchHomeTweetsByAccount(account)
+	for range time.Tick(1 * time.Minute) {
+		twitter.FetchHomeTweetsByAccount(account)
+	}
 }
