@@ -25,9 +25,9 @@ func FetchTweetsByAccount(account string) {
 	}
 }
 
-func FetchHomeTweetsByAccount(account string) {
+func FetchHomeTweetsByAccount() []Tweet {
+	var timelines []Tweet
 	values := url.Values{}
-	values.Set("screen_name", account)
 
 	tweets, err := twitterApi.GetHomeTimeline(values)
 	if err != nil {
@@ -40,7 +40,12 @@ func FetchHomeTweetsByAccount(account string) {
 			"%s%s%s%s%s%s%s",
 			"\x1b[3", onesPlace, "m", tweet.User.Name, ": ", tweet.FullText, "\x1b[0m",
 		)
+		timelines = append(
+			timelines,
+			Tweet{Id: tweet.IdStr, UserName: tweet.User.Name, TweetText: tweet.FullText},
+		)
 		fmt.Printf(coloredTweet)
 		fmt.Print("\n\n")
 	}
+	return timelines
 }
