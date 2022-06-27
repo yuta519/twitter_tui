@@ -11,7 +11,9 @@ func main() {
 	tweets := twitter.FetchHomeTweetsByAccount()
 	fmt.Println(tweets)
 	for range time.Tick(1 * time.Minute) {
-		fmt.Println(tweets)
+		//var tweets []twitter.Tweet
+		//tweets = twitter.FetchHomeTweetsByAccount()
 		twitter.FetchHomeTweetsByAccount()
+		// fmt.Println(tweets)
 	}
 }
