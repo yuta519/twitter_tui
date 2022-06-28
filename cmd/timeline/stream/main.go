@@ -13,6 +13,7 @@ func main() {
 	for range time.Tick(1 * time.Minute) {
 		updatedTweets := twitter.FetchHomeTweets()
 		twitter.PrintDiffTweets(updatedTweets, currentTweets)
+		// Need to create union function
 		//currentTweets = append(currentTweets, updatedTweets)
 	}
 }

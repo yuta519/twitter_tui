@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"net/url"
 	"strconv"
+
+	"github.com/yuta519/twitter_tui/pkg/utils"
 )
 
 func FetchTweetsByAccount(account string) {
@@ -35,17 +37,20 @@ func FetchHomeTweets() []Tweet {
 	}
 
 	for i, tweet := range tweets {
-		onesPlace := strconv.Itoa(i % 10)
-		coloredTweet := fmt.Sprintf(
-			"%s%s%s%s%s%s%s",
-			"\x1b[3", onesPlace, "m", tweet.User.Name, ": ", tweet.FullText, "\x1b[0m",
-		)
+		onesPlace := i % 10
+		if i%10 >= 8 {
+			onesPlace = 10 - i%10
+		}
 		timelines = append(
 			timelines,
-			Tweet{Id: tweet.IdStr, CreatedAt: tweet.CreatedAt, UserName: tweet.User.Name, TweetText: coloredTweet},
+			Tweet{
+				Id:        utils.ColoredText(tweet.IdStr, onesPlace),
+				CreatedAt: utils.ColoredText(tweet.CreatedAt, onesPlace),
+				UserName:  utils.ColoredText(tweet.User.Name, onesPlace),
+				TweetText: utils.ColoredText(tweet.FullText, onesPlace),
+			},
 		)
-		fmt.Printf(coloredTweet)
-		fmt.Print("\n\n")
 	}
+
 	return timelines
 }

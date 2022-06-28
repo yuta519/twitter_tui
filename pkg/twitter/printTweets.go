@@ -15,8 +15,6 @@ func PrintDiffTweets(newTweets []Tweet, oldTweets []Tweet) {
 		}
 		result = append(result, data)
 	}
-	fmt.Println(newTweets)
-	fmt.Println(oldTweets)
 
 	for _, tweet := range result {
 		fmt.Println(tweet.UserName)
