@@ -11,9 +11,11 @@ func main() {
 	tweets := twitter.FetchHomeTweets()
 	fmt.Println(tweets)
 	for range time.Tick(1 * time.Minute) {
-		//var tweets []twitter.Tweet
-		//tweets = twitter.FetchHomeTweets()
 		twitter.FetchHomeTweets()
+		// updatedTweets = twitter.FetchHomeTweets()
+		// hogehoge(updatedTweets, currentTweets)
+		// var currentTweets []twitter.Tweet
+		// currentTweets = updatedTweets
 		// fmt.Println(tweets)
 	}
 }

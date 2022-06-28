@@ -42,7 +42,6 @@ func FetchHomeTweets() []Tweet {
 		)
 		timelines = append(
 			timelines,
-			//Tweet{Id: tweet.IdStr, UserName: tweet.User.Name, TweetText: tweet.FullText},
 			Tweet{Id: tweet.IdStr, CreatedAt: tweet.CreatedAt, UserName: tweet.User.Name, TweetText: coloredTweet},
 		)
 		fmt.Printf(coloredTweet)
