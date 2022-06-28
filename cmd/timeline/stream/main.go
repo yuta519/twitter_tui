@@ -8,14 +8,14 @@ import (
 )
 
 func main() {
+	// var currentTweets []twitter.Tweet
 	tweets := twitter.FetchHomeTweets()
 	fmt.Println(tweets)
 	for range time.Tick(1 * time.Minute) {
 		twitter.FetchHomeTweets()
 		// updatedTweets = twitter.FetchHomeTweets()
 		// hogehoge(updatedTweets, currentTweets)
-		// var currentTweets []twitter.Tweet
-		// currentTweets = updatedTweets
+		// currentTweets = append(currentTweets, updatedTweets)
 		// fmt.Println(tweets)
 	}
 }
