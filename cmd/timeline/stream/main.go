@@ -1,21 +1,18 @@
 package main
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/yuta519/twitter_tui/pkg/twitter"
 )
 
 func main() {
-	// var currentTweets []twitter.Tweet
-	tweets := twitter.FetchHomeTweets()
-	fmt.Println(tweets)
+	var currentTweets []twitter.Tweet
+	updatedTweets := twitter.FetchHomeTweets()
+	twitter.PrintDiffTweets(updatedTweets, currentTweets)
 	for range time.Tick(1 * time.Minute) {
-		twitter.FetchHomeTweets()
-		// updatedTweets = twitter.FetchHomeTweets()
-		// hogehoge(updatedTweets, currentTweets)
-		// currentTweets = append(currentTweets, updatedTweets)
-		// fmt.Println(tweets)
+		updatedTweets := twitter.FetchHomeTweets()
+		twitter.PrintDiffTweets(updatedTweets, currentTweets)
+		//currentTweets = append(currentTweets, updatedTweets)
 	}
 }
