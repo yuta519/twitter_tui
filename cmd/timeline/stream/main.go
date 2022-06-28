@@ -8,12 +8,12 @@ import (
 )
 
 func main() {
-	tweets := twitter.FetchHomeTweetsByAccount()
+	tweets := twitter.FetchHomeTweets()
 	fmt.Println(tweets)
 	for range time.Tick(1 * time.Minute) {
 		//var tweets []twitter.Tweet
-		//tweets = twitter.FetchHomeTweetsByAccount()
-		twitter.FetchHomeTweetsByAccount()
+		//tweets = twitter.FetchHomeTweets()
+		twitter.FetchHomeTweets()
 		// fmt.Println(tweets)
 	}
 }

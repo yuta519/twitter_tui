@@ -25,7 +25,7 @@ func FetchTweetsByAccount(account string) {
 	}
 }
 
-func FetchHomeTweetsByAccount() []Tweet {
+func FetchHomeTweets() []Tweet {
 	var timelines []Tweet
 	values := url.Values{}
 
