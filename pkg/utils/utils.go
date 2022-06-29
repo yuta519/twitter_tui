@@ -12,7 +12,3 @@ func ColoredText(text string, index int) string {
 	)
 	return coloredText
 }
-
-func Union(array1 []any, array2 []any) {
-
-}

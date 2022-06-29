@@ -54,3 +54,19 @@ func FetchHomeTweets() []Tweet {
 
 	return timelines
 }
+
+func UnionTweets(array1 []Tweet, array2 []Tweet) []Tweet {
+	s := make(map[Tweet]struct{}, len(array1))
+	for _, data := range array1 {
+		s[data] = struct{}{}
+	}
+	for _, data := range array2 {
+		s[data] = struct{}{}
+	}
+
+	newArray := make([]Tweet, 0, len(s))
+	for key, _ := range s {
+		newArray = append(newArray, key)
+	}
+	return newArray
+}
