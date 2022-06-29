@@ -14,6 +14,6 @@ func main() {
 		updatedTweets := twitter.FetchHomeTweets()
 		twitter.PrintDiffTweets(updatedTweets, currentTweets)
 		// Need to create union function
-		//currentTweets = append(currentTweets, updatedTweets)
+		currentTweets = twitter.UnionTweets(currentTweets, updatedTweets)
 	}
 }
