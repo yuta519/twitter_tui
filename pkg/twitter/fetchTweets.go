@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"net/url"
 	"strconv"
-
-	"github.com/yuta519/twitter_tui/pkg/utils"
 )
 
 func FetchTweetsByAccount(account string) {
@@ -36,18 +34,14 @@ func FetchHomeTweets() []Tweet {
 		panic(err)
 	}
 
-	for i, tweet := range tweets {
-		onesPlace := i % 10
-		if i%10 >= 8 {
-			onesPlace = 10 - i%10
-		}
+	for _, tweet := range tweets {
 		timelines = append(
 			timelines,
 			Tweet{
 				Id:        tweet.IdStr,
-				CreatedAt: utils.ColoredText(tweet.CreatedAt, onesPlace),
-				UserName:  utils.ColoredText(tweet.User.Name, onesPlace),
-				TweetText: utils.ColoredText(tweet.FullText, onesPlace),
+				CreatedAt: tweet.CreatedAt,
+				UserName:  tweet.User.Name,
+				TweetText: tweet.FullText,
 			},
 		)
 	}
@@ -56,17 +50,17 @@ func FetchHomeTweets() []Tweet {
 }
 
 func UnionTweets(tweets1 []Tweet, tweets2 []Tweet) []Tweet {
-	s := make(map[Tweet]struct{}, len(tweets1))
+	s := make(map[string]Tweet, len(tweets1))
 	for _, data := range tweets1 {
-		s[data] = struct{}{}
+		s[data.Id] = data
 	}
 	for _, data := range tweets2 {
-		s[data] = struct{}{}
+		s[data.Id] = data
 	}
 
 	newTweets := make([]Tweet, 0, len(s))
-	for key, _ := range s {
-		newTweets = append(newTweets, key)
+	for _, value := range s {
+		newTweets = append(newTweets, value)
 	}
 	return newTweets
 }
