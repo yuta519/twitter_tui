@@ -17,15 +17,9 @@ func PrintDiffTweets(newTweets []Tweet, oldTweets []Tweet) {
 	}
 
 	for i := len(tweets) - 1; i >= 0; i-- {
-		fmt.Println(tweets[i].UserName)
 		fmt.Println(tweets[i].CreatedAt)
+		fmt.Println(tweets[i].UserName)
 		fmt.Println(tweets[i].TweetText)
 		fmt.Print("\n")
 	}
-	// for _, tweet := range tweets {
-	// 	fmt.Println(tweet.UserName)
-	// 	fmt.Println(tweet.CreatedAt)
-	// 	fmt.Println(tweet.TweetText)
-	// 	fmt.Print("\n")
-	// }
 }
