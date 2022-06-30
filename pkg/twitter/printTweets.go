@@ -8,18 +8,24 @@ func PrintDiffTweets(newTweets []Tweet, oldTweets []Tweet) {
 		slice[data] = struct{}{}
 	}
 
-	result := make([]Tweet, 0, len(oldTweets))
+	tweets := make([]Tweet, 0, len(oldTweets))
 	for _, data := range newTweets {
 		if _, ok := slice[data]; ok {
 			continue
 		}
-		result = append(result, data)
+		tweets = append(tweets, data)
 	}
 
-	for _, tweet := range result {
-		fmt.Println(tweet.UserName)
-		fmt.Println(tweet.CreatedAt)
-		fmt.Println(tweet.TweetText)
+	for i := len(tweets) - 1; i >= 0; i-- {
+		fmt.Println(tweets[i].UserName)
+		fmt.Println(tweets[i].CreatedAt)
+		fmt.Println(tweets[i].TweetText)
 		fmt.Print("\n")
 	}
+	// for _, tweet := range tweets {
+	// 	fmt.Println(tweet.UserName)
+	// 	fmt.Println(tweet.CreatedAt)
+	// 	fmt.Println(tweet.TweetText)
+	// 	fmt.Print("\n")
+	// }
 }
