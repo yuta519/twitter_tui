@@ -25,7 +25,6 @@ func PrintDiffTweets(newTweets []Tweet, oldTweets []Tweet) {
 		if i%10 >= 8 {
 			onesPlace = 10 - i%10
 		}
-
 		fmt.Println(utils.ColoredText(tweets[i].CreatedAt, onesPlace))
 		fmt.Println(utils.ColoredText(tweets[i].UserName, onesPlace))
 		fmt.Println(utils.ColoredText(tweets[i].TweetText, onesPlace))
