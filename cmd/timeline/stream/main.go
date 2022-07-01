@@ -8,9 +8,8 @@ import (
 
 func main() {
 	var currentTweets []twitter.Tweet
-	updatedTweets := twitter.FetchHomeTweets()
-	twitter.PrintDiffTweets(updatedTweets, currentTweets)
-	currentTweets = twitter.UnionTweets(currentTweets, updatedTweets)
+	twitter.PrintDiffTweets(twitter.FetchHomeTweets(), currentTweets)
+	currentTweets = twitter.UnionTweets(currentTweets, twitter.FetchHomeTweets())
 	for range time.Tick(1 * time.Minute) {
 		updatedTweets := twitter.FetchHomeTweets()
 		twitter.PrintDiffTweets(updatedTweets, currentTweets)

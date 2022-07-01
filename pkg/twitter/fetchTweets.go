@@ -45,7 +45,6 @@ func FetchHomeTweets() []Tweet {
 			},
 		)
 	}
-
 	return timelines
 }
 

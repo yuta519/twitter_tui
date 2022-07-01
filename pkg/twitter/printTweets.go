@@ -2,6 +2,7 @@ package twitter
 
 import (
 	"fmt"
+	"math/rand"
 
 	"github.com/yuta519/twitter_tui/pkg/utils"
 )
@@ -21,13 +22,10 @@ func PrintDiffTweets(newTweets []Tweet, oldTweets []Tweet) {
 	}
 
 	for i := len(tweets) - 1; i >= 0; i-- {
-		onesPlace := i % 10
-		if i%10 >= 8 {
-			onesPlace = 10 - i%10
-		}
-		fmt.Println(utils.ColoredText(tweets[i].CreatedAt, onesPlace))
-		fmt.Println(utils.ColoredText(tweets[i].UserName, onesPlace))
-		fmt.Println(utils.ColoredText(tweets[i].TweetText, onesPlace))
+		randint := rand.Intn(8)
+		fmt.Println(utils.ColoredText(tweets[i].CreatedAt, randint))
+		fmt.Println(utils.ColoredText(tweets[i].UserName, randint))
+		fmt.Println(utils.ColoredText(tweets[i].TweetText, randint))
 		fmt.Print("\n")
 	}
 }
