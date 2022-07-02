@@ -23,10 +23,11 @@ func FetchTweetsByAccount(account string) {
 		fmt.Printf(coloredTweet)
 		fmt.Print("\n\n")
 	}
+
 }
 
 func FetchHomeTweets() []Tweet {
-	var timelines []Tweet
+	var homeTweets []Tweet
 	values := url.Values{}
 
 	tweets, err := twitterApi.GetHomeTimeline(values)
@@ -35,8 +36,8 @@ func FetchHomeTweets() []Tweet {
 	}
 
 	for _, tweet := range tweets {
-		timelines = append(
-			timelines,
+		homeTweets = append(
+			homeTweets,
 			Tweet{
 				Id:        tweet.IdStr,
 				CreatedAt: tweet.CreatedAt,
@@ -45,7 +46,7 @@ func FetchHomeTweets() []Tweet {
 			},
 		)
 	}
-	return timelines
+	return homeTweets
 }
 
 func UnionTweets(tweets1 []Tweet, tweets2 []Tweet) []Tweet {
