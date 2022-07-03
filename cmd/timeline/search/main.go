@@ -16,5 +16,5 @@ func main() {
 		log.Fatal(err)
 	}
 
-	twitter.FetchTweetsByAccount(account)
+	twitter.PrintTweets(twitter.FetchTweetsByAccount(account))
 }

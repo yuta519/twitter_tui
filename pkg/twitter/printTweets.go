@@ -7,6 +7,16 @@ import (
 	"github.com/yuta519/twitter_tui/pkg/utils"
 )
 
+func PrintTweets(tweets []Tweet) {
+	for i := len(tweets) - 1; i >= 0; i-- {
+		randint := rand.Intn(8)
+		fmt.Println(utils.ColoredText(tweets[i].CreatedAt, randint))
+		fmt.Println(utils.ColoredText(tweets[i].UserName, randint))
+		fmt.Println(utils.ColoredText(tweets[i].TweetText, randint))
+		fmt.Print("\n")
+	}
+}
+
 func PrintDiffTweets(newTweets []Tweet, oldTweets []Tweet) {
 	comparisonMap := make(map[string]Tweet, len(newTweets))
 	for _, data := range oldTweets {
