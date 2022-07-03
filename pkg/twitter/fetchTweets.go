@@ -1,12 +1,12 @@
 package twitter
 
 import (
-	"fmt"
 	"net/url"
-	"strconv"
 )
 
-func FetchTweetsByAccount(account string) {
+func FetchTweetsByAccount(account string) []Tweet {
+	var tweetsByAccount []Tweet
+
 	values := url.Values{}
 	values.Set("screen_name", account)
 
@@ -15,22 +15,24 @@ func FetchTweetsByAccount(account string) {
 		panic(err)
 	}
 
-	for i, tweet := range tweets {
-		onesPlace := strconv.Itoa(i % 10)
-		coloredTweet := fmt.Sprintf(
-			"%s%s%s%s%s", "\x1b[3", onesPlace, "m", tweet.FullText, "\x1b[0m",
+	for _, tweet := range tweets {
+		tweetsByAccount = append(
+			tweetsByAccount,
+			Tweet{
+				Id:        tweet.IdStr,
+				CreatedAt: tweet.CreatedAt,
+				UserName:  tweet.User.Name,
+				TweetText: tweet.FullText,
+			},
 		)
-		fmt.Printf(coloredTweet)
-		fmt.Print("\n\n")
 	}
-
+	return tweetsByAccount
 }
 
 func FetchHomeTweets() []Tweet {
 	var homeTweets []Tweet
-	values := url.Values{}
 
-	tweets, err := twitterApi.GetHomeTimeline(values)
+	tweets, err := twitterApi.GetHomeTimeline(url.Values{})
 	if err != nil {
 		panic(err)
 	}
